@@ -1,0 +1,592 @@
+// Variables
+$primary: #8B5CF6;
+$primary-dark: #7C3AED;
+$secondary: #10B981;
+$accent: #EC4899;
+$background: #0F172A;
+$surface: #1E293B;
+$surface-light: #334155;
+$text-primary: #F1F5F9;
+$text-secondary: #94A3B8;
+$text-muted: #64748B;
+$glass: rgba(255, 255, 255, 0.08);
+$radius: 16px;
+$card-width: 360px;
+$transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+$transition-slow: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin glass-effect {
+  background: $glass;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@mixin gradient-text {
+  background: linear-gradient(90deg, $primary, $accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@mixin card-shadow {
+  box-shadow: 
+    0 10px 40px rgba(2, 6, 23, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+@mixin hover-card-shadow {
+  box-shadow: 
+    0 20px 60px rgba(2, 6, 23, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+// Root variables for CSS
+:root {
+  --primary: #{$primary};
+  --primary-dark: #{$primary-dark};
+  --secondary: #{$secondary};
+  --accent: #{$accent};
+  --background: #{$background};
+  --surface: #{$surface};
+  --surface-light: #{$surface-light};
+  --text-primary: #{$text-primary};
+  --text-secondary: #{$text-secondary};
+  --text-muted: #{$text-muted};
+  --glass: #{$glass};
+  --radius: #{$radius};
+  --card-width: #{$card-width};
+  --transition: #{$transition};
+  --transition-slow: #{$transition-slow};
+}
+
+// Reset and base styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, $background 0%, #1E1B4B 100%);
+  color: $text-primary;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  @include flex-center;
+  position: relative;
+  overflow-x: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 20%),
+      radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 20%),
+      radial-gradient(circle at 50% 50%, rgba(236, 72, 153, 0.05) 0%, transparent 30%);
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+// Carousel container
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: $card-width;
+  margin: 0 auto;
+}
+
+.carousel-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.carousel-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  @include gradient-text;
+  letter-spacing: -0.5px;
+}
+
+.carousel-subtitle {
+  color: $text-secondary;
+  font-size: 0.9rem;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 640px;
+  overflow: hidden;
+  border-radius: $radius;
+}
+
+// Movie cards
+.movie-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba($surface, 0.9) 0%, rgba($background, 0.95) 100%);
+  border-radius: $radius;
+  overflow: hidden;
+  @include card-shadow;
+  transition: transform $transition-slow, opacity $transition-slow, box-shadow $transition;
+  transform-origin: center;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  opacity: 0;
+  pointer-events: none;
+  backdrop-filter: blur(10px);
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0) scale(1);
+    z-index: 10;
+
+    &:hover {
+      transform: translateY(-12px) scale(1.02);
+      @include hover-card-shadow;
+    }
+
+    &.tilt {
+      transition: transform 0.1s ease-out, box-shadow $transition;
+    }
+  }
+
+  &.prev {
+    transform: translateX(-100%) scale(0.9);
+    opacity: 0.3;
+    z-index: 5;
+  }
+
+  &.next {
+    transform: translateX(100%) scale(0.9);
+    opacity: 0.3;
+    z-index: 5;
+  }
+}
+
+// Poster area
+.poster {
+  position: relative;
+  aspect-ratio: 5/6;
+  background-size: cover;
+  background-position: center;
+  transform: translateZ(20px);
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba($background, 0) 30%, rgba($background, 0.8) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba($primary, 0.1) 0%, rgba($accent, 0.05) 100%);
+    opacity: 0;
+    transition: opacity $transition;
+    pointer-events: none;
+  }
+
+  .movie-card.active:hover &::after {
+    opacity: 1;
+  }
+}
+
+// Favorite button
+.fav-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  @include flex-center;
+  @include glass-effect;
+  cursor: pointer;
+  transition: all $transition;
+  z-index: 10;
+  transform: translateZ(30px);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateZ(30px) scale(1.05);
+  }
+
+  &:active {
+    transform: translateZ(30px) scale(0.95);
+  }
+
+  .heart {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: #ffffffcc;
+    stroke-width: 1.8;
+    transition: all $transition;
+  }
+
+  &.favorited {
+    background: linear-gradient(135deg, rgba($accent, 0.2), rgba($primary, 0.15));
+    border-color: rgba($accent, 0.3);
+
+    .heart {
+      fill: $accent;
+      stroke: $accent;
+      transform: scale(1.08);
+    }
+  }
+}
+
+// Card content
+.card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transform: translateZ(10px);
+}
+
+.meta {
+  flex: 1;
+}
+
+.title-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  font-weight: 700;
+  flex: 1;
+}
+
+.year {
+  font-size: 0.9rem;
+  color: $text-secondary;
+  background: $glass;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.genres {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.chip {
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  background: rgba($primary, 0.1);
+  color: $primary;
+  border-radius: 20px;
+  border: 1px solid rgba($primary, 0.2);
+  white-space: nowrap;
+  font-weight: 500;
+  transition: all $transition;
+
+  &:hover {
+    background: rgba($primary, 0.2);
+    transform: translateY(-1px);
+  }
+}
+
+// Rating
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+    fill: rgba(255, 255, 255, 0.1);
+    stroke: rgba(0, 0, 0, 0.1);
+    stroke-width: 1;
+    transition: fill 0.3s ease;
+
+    &.filled {
+      fill: #FBBF24;
+    }
+
+    &.half-filled {
+      fill: url(#half-star);
+    }
+  }
+}
+
+.score {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #FBBF24;
+}
+
+// Description
+.desc {
+  font-size: 0.92rem;
+  color: $text-secondary;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+// Action row
+.action-row {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all $transition;
+  color: $text-primary;
+  flex: 1;
+  font-weight: 500;
+  @include flex-center;
+  gap: 6px;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &.primary {
+    background: linear-gradient(90deg, $primary, $primary-dark);
+    color: white;
+    border: none;
+    box-shadow: 0 8px 20px rgba($primary, 0.3);
+
+    &:hover {
+      background: linear-gradient(90deg, $primary-dark, $primary);
+      box-shadow: 0 10px 25px rgba($primary, 0.4);
+    }
+  }
+}
+
+// Navigation buttons
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  @include glass-effect;
+  color: white;
+  cursor: pointer;
+  @include flex-center;
+  transition: all $transition;
+  z-index: 20;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-50%) scale(1.08);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  }
+
+  &:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: translateY(-50%) scale(1);
+  }
+
+  &.prev-btn {
+    left: -70px;
+  }
+
+  &.next-btn {
+    right: -70px;
+  }
+}
+
+// Carousel dots
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  cursor: pointer;
+  transition: all $transition;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, $primary, $accent);
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform $transition;
+  }
+
+  &.active {
+    transform: scale(1.2);
+
+    &::before {
+      transform: scale(1);
+    }
+  }
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+// Progress bar
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  border-radius: 0 0 $radius $radius;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(90deg, $primary, $accent);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .carousel-container {
+    max-width: 90vw;
+  }
+
+  .nav-btn {
+    width: 44px;
+    height: 44px;
+
+    &.prev-btn {
+      left: -50px;
+    }
+
+    &.next-btn {
+      right: -50px;
+    }
+  }
+
+  .carousel {
+    height: 580px;
+  }
+
+  .carousel-title {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-container {
+    max-width: 95vw;
+  }
+
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+
+    &.prev-btn {
+      left: -40px;
+    }
+
+    &.next-btn {
+      right: -40px;
+    }
+  }
+
+  .carousel {
+    height: 520px;
+  }
+
+  .card-body {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .carousel-title {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Film Favorit Saya</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    
+</head>
+
+<body>
+    <div class="carousel-container">
+        <div class="carousel-header">
+            <h1 class="carousel-title">Film</h1>
+            <p class="carousel-subtitle">Film favorit saya</p>
+        </div>
+        
+        <button class="nav-btn prev-btn" aria-label="Film sebelumnya">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/>
+            </svg>
+        </button>
+        
+        <div class="carousel">
+            <!-- Interstellar -->
+            <article class="movie-card active" aria-label="Card film Interstellar" data-index="0">
+                <div class="poster"
+                    style="background-image: url('/images/Interstellar_2014.jpeg');"
+                    role="img" aria-label="Poster film Interstellar">
+                    <button class="fav-btn" aria-pressed="true" title="Hapus dari favorit">
+                        <svg class="heart" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M12.1 21s-7.4-4.6-9.3-7.2C.9 11.6 3.6 7 7.6 7c2.1 0 3.4 1.2 4.4 2.4.9-1.2 2.3-2.4 4.4-2.4 4 0 6.7 4.6 4.8 6.8-1.9 2.6-9.1 7.2-9.1 7.2z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="card-body">
+                    <div class="meta">
+                        <div class="title-row">
+                            <h3>Interstellar</h3>
+                            <div class="year">2014</div>
+                        </div>
+
+                        <div class="genres">
+                            <span class="chip">Sci-Fi</span>
+                            <span class="chip">Drama</span>
+                            <span class="chip">Petualangan</span>
+                        </div>
+
+                        <div class="rating" aria-label="Rating film 8.6 dari 10">
+                            <div class="stars" data-score="4.3">
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                            </div>
+                            <div class="score">8.6</div>
+                        </div>
+
+                        <p class="desc">Sekelompok penjelajah antariksa melakukan perjalanan melintasi lubang cacing untuk menemukan planet baru yang dapat dihuni manusia.</p>
+
+                        <!-- <div class="action-row">
+                            <button class="btn primary" title="Mainkan trailer">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                </svg>
+                                Tonton Trailer
+                            </button>
+                            <button class="btn" title="Tambah ke daftar tonton">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                                Tambah ke Tonton
+                            </button>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </article>
+
+            <!-- The Croods -->
+            <article class="movie-card" aria-label="Card film The Croods" data-index="1">
+                <div class="poster"
+                    style="background-image: url('/images/THE\ CROODS-\ 2013.jpeg');"
+                    role="img" aria-label="Poster film The Croods">
+                    <button class="fav-btn" aria-pressed="true" title="Hapus dari favorit">
+                        <svg class="heart" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M12.1 21s-7.4-4.6-9.3-7.2C.9 11.6 3.6 7 7.6 7c2.1 0 3.4 1.2 4.4 2.4.9-1.2 2.3-2.4 4.4-2.4 4 0 6.7 4.6 4.8 6.8-1.9 2.6-9.1 7.2-9.1 7.2z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="card-body">
+                    <div class="meta">
+                        <div class="title-row">
+                            <h3>The Croods</h3>
+                            <div class="year">2013</div>
+                        </div>
+
+                        <div class="genres">
+                            <span class="chip">Animasi</span>
+                            <span class="chip">Keluarga</span>
+                            <span class="chip">Komedi</span>
+                        </div>
+
+                        <div class="rating" aria-label="Rating film 7.2 dari 10">
+                            <div class="stars" data-score="3.6">
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                            </div>
+                            <div class="score">7.2</div>
+                        </div>
+
+                        <p class="desc">Keluarga prasejarah harus meninggalkan rumah mereka setelah bencana menghancurkan gua mereka, memulai petualangan epik di dunia yang aneh.</p>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </article>
+
+            <!-- The Adventures of Tintin -->
+            <article class="movie-card" aria-label="Card film The Adventures of Tintin" data-index="2">
+                <div class="poster"
+                    style="background-image: url('/images/The\ Adventures\ Of\ TinTin.jpeg');"
+                    role="img" aria-label="Poster film The Adventures of Tintin">
+                    <button class="fav-btn" aria-pressed="true" title="Hapus dari favorit">
+                        <svg class="heart" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M12.1 21s-7.4-4.6-9.3-7.2C.9 11.6 3.6 7 7.6 7c2.1 0 3.4 1.2 4.4 2.4.9-1.2 2.3-2.4 4.4-2.4 4 0 6.7 4.6 4.8 6.8-1.9 2.6-9.1 7.2-9.1 7.2z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="card-body">
+                    <div class="meta">
+                        <div class="title-row">
+                            <h3>The Adventures of Tintin</h3>
+                            <div class="year">2011</div>
+                        </div>
+
+                        <div class="genres">
+                            <span class="chip">Animasi</span>
+                            <span class="chip">Petualangan</span>
+                            <span class="chip">Misteri</span>
+                        </div>
+
+                        <div class="rating" aria-label="Rating film 7.3 dari 10">
+                            <div class="stars" data-score="3.65">
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                            </div>
+                            <div class="score">7.3</div>
+                        </div>
+
+                        <p class="desc">Tintin, seorang reporter muda, dan anjingnya Snowy menemukan model kapal yang menyimpan rahasia harta karun dan konspirasi berbahaya.</p>
+
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </article>
+
+            <!-- Harry Potter 1 -->
+            <article class="movie-card" aria-label="Card film Harry Potter and the Sorcerer's Stone" data-index="3">
+                <div class="poster"
+                    style="background-image: url('/images/Harry\ Potter\ and\ the\ Philosopher\'s\ Stone\ -\ Fantasy.jpeg');"
+                    role="img" aria-label="Poster film Harry Potter and the Sorcerer's Stone">
+                    <button class="fav-btn" aria-pressed="true" title="Hapus dari favorit">
+                        <svg class="heart" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M12.1 21s-7.4-4.6-9.3-7.2C.9 11.6 3.6 7 7.6 7c2.1 0 3.4 1.2 4.4 2.4.9-1.2 2.3-2.4 4.4-2.4 4 0 6.7 4.6 4.8 6.8-1.9 2.6-9.1 7.2-9.1 7.2z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="card-body">
+                    <div class="meta">
+                        <div class="title-row">
+                            <h3>Harry Potter and the Sorcerer's Stone</h3>
+                            <div class="year">2001</div>
+                        </div>
+
+                        <div class="genres">
+                            <span class="chip">Fantasi</span>
+                            <span class="chip">Petualangan</span>
+                            <span class="chip">Keluarga</span>
+                        </div>
+
+                        <div class="rating" aria-label="Rating film 7.6 dari 10">
+                            <div class="stars" data-score="3.8">
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                            </div>
+                            <div class="score">7.6</div>
+                        </div>
+
+                        <p class="desc">Harry Potter menemukan dia adalah seorang penyihir dan memulai tahun pertamanya di Sekolah Sihir Hogwarts, di mana dia mulai mengungkap kebenaran tentang orangtuanya.</p>
+
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </article>
+
+            <!-- Spider-Man: Far From Home -->
+            <article class="movie-card" aria-label="Card film Spider-Man: Far From Home" data-index="4">
+                <div class="poster"
+                    style="background-image: url('/images/spider-man\ far\ from\ home.jpeg');"
+                    role="img" aria-label="Poster film Spider-Man: Far From Home">
+                    <button class="fav-btn" aria-pressed="true" title="Hapus dari favorit">
+                        <svg class="heart" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M12.1 21s-7.4-4.6-9.3-7.2C.9 11.6 3.6 7 7.6 7c2.1 0 3.4 1.2 4.4 2.4.9-1.2 2.3-2.4 4.4-2.4 4 0 6.7 4.6 4.8 6.8-1.9 2.6-9.1 7.2-9.1 7.2z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="card-body">
+                    <div class="meta">
+                        <div class="title-row">
+                            <h3>Spider-Man: Far From Home</h3>
+                            <div class="year">2019</div>
+                        </div>
+
+                        <div class="genres">
+                            <span class="chip">Aksi</span>
+                            <span class="chip">Petualangan</span>
+                            <span class="chip">Sci-Fi</span>
+                        </div>
+
+                        <div class="rating" aria-label="Rating film 7.4 dari 10">
+                            <div class="stars" data-score="3.7">
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                                <svg viewBox="0 0 24 24" class="star">
+                                    <path
+                                        d="M12 .587l3.668 7.431L23.5 9.748l-5.666 5.522L19.332 24 12 20.201 4.668 24l1.498-8.73L.5 9.748l7.832-1.73z" />
+                                </svg>
+                            </div>
+                            <div class="score">7.4</div>
+                        </div>
+
+                        <p class="desc">Peter Parker pergi liburan ke Eropa dengan teman-temannya, tetapi rencananya terganggu ketika Nick Fury memintanya membantu melawan makhluk elemental.</p>
+
+                       
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </article>
+        </div>
+
+        <button class="nav-btn next-btn" aria-label="Film berikutnya">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/>
+            </svg>
+        </button>
+
+        <!-- Dots indicator -->
+        <div class="carousel-dots">
+            <button class="dot active" data-index="0" aria-label="Tampilkan film Interstellar"></button>
+            <button class="dot" data-index="1" aria-label="Tampilkan film The Croods"></button>
+            <button class="dot" data-index="2" aria-label="Tampilkan film The Adventures of Tintin"></button>
+            <button class="dot" data-index="3" aria-label="Tampilkan film Harry Potter"></button>
+            <button class="dot" data-index="4" aria-label="Tampilkan film Spider-Man"></button>
+        </div>
+    </div>
+
+   
+</body>
+
+</html>
